@@ -108,6 +108,8 @@ export function FraudRadarPage() {
 
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportReason, setReportReason] = useState("");
+  const [reportType, setReportType] = useState("Telefone");
+  const [reportValue, setReportValue] = useState("");
   const [reportSuccess, setReportSuccess] = useState(false);
   const [reportSubmitting, setReportSubmitting] = useState(false);
 
@@ -188,8 +190,8 @@ export function FraudRadarPage() {
     setReportSubmitting(true);
     try {
       await submitToCanister({
-        reportType: "ip",
-        target: "global",
+        reportType: reportType.toLowerCase().replace(/\s+/g, "_"),
+        target: reportValue.trim() || "global",
         description: reportReason || "Denúncia global",
         riskScore: 70,
         country: "PT",
@@ -208,6 +210,8 @@ export function FraudRadarPage() {
   const handleReportClose = () => {
     setReportModalOpen(false);
     setReportReason("");
+    setReportType("Telefone");
+    setReportValue("");
     setReportSuccess(false);
     setReportSubmitting(false);
   };
@@ -594,6 +598,34 @@ export function FraudRadarPage() {
           ) : (
             <div className="space-y-4 py-2">
               <div className="space-y-2">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">Tipo de fraude</p>
+                  <select
+                    value={reportType}
+                    onChange={(e) => setReportType(e.target.value)}
+                    className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-white"
+                  >
+                    <option>Telefone</option>
+                    <option>Email</option>
+                    <option>Link / URL</option>
+                    <option>IBAN</option>
+                    <option>Cripto</option>
+                    <option>Mensagem SMS/WhatsApp</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">
+                    Número / valor a reportar
+                  </p>
+                  <input
+                    type="text"
+                    value={reportValue}
+                    onChange={(e) => setReportValue(e.target.value)}
+                    placeholder="Ex: +351912345678, email@dominio.com, https://..."
+                    className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-white"
+                  />
+                </div>
                 <p className="text-sm font-medium">Motivo da denúncia</p>
                 <Textarea
                   placeholder="Descreva o tipo de fraude ou comportamento suspeito…"

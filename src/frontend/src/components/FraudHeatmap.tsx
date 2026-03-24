@@ -1789,20 +1789,7 @@ const PRESET_CITIES: Array<{ key: string; display: string }> = [
   { key: "Tokyo", display: "Tokyo" },
 ];
 
-const REGIONAL_STATS = {
-  global: "7.8M",
-  PT: "847k",
-  BR: "2.1M",
-  EU: "4.7M",
-};
-
-// FIX: period-based pin counters (source: AbuseIPDB + comunidade + histórico)
-const PERIOD_COUNTS = {
-  "24h": "12.847",
-  "7d": "87.234",
-  "30d": "234.567",
-  historical: "7.8M",
-};
+// Stats computed from generateFraudData() inside component
 
 type PeriodFilter = FraudReport["period"] | "all";
 
@@ -1855,6 +1842,17 @@ export function FraudHeatmap() {
   } | null>(null);
 
   const allReports = generateFraudData();
+
+  const ptCount = allReports.filter((r) => r.countryCode === "PT").length;
+  const brCount = allReports.filter((r) => r.countryCode === "BR").length;
+  const euCount = allReports.filter((r) => r.countryCode === "EU").length;
+  const globalCount = allReports.length;
+  const count24h = allReports.filter((r) => r.period === "24h").length;
+  const count7d = allReports.filter((r) => r.period === "7d").length;
+  const count30d = allReports.filter((r) => r.period === "30d").length;
+  const countHistorical = allReports.filter(
+    (r) => r.period === "historical",
+  ).length;
 
   const visibleReports = allReports.filter((r) => {
     if (periodFilter !== "all" && r.period !== periodFilter) return false;
@@ -1914,22 +1912,33 @@ export function FraudHeatmap() {
       {/* Regional Counters */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <div className="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-xl p-3 text-center">
-          <div className="text-lg font-bold">{REGIONAL_STATS.global}</div>
+          <div className="text-lg font-bold">
+            {globalCount.toLocaleString("pt-PT")}
+          </div>
           <div className="text-xs text-slate-300 mt-0.5">🌍 Global</div>
         </div>
         <div className="bg-gradient-to-br from-green-700 to-green-800 text-white rounded-xl p-3 text-center">
-          <div className="text-lg font-bold">{REGIONAL_STATS.PT}</div>
+          <div className="text-lg font-bold">
+            {ptCount.toLocaleString("pt-PT")}
+          </div>
           <div className="text-xs text-green-200 mt-0.5">🇵🇹 Portugal</div>
         </div>
         <div className="bg-gradient-to-br from-yellow-600 to-yellow-700 text-white rounded-xl p-3 text-center">
-          <div className="text-lg font-bold">{REGIONAL_STATS.BR}</div>
+          <div className="text-lg font-bold">
+            {brCount.toLocaleString("pt-PT")}
+          </div>
           <div className="text-xs text-yellow-100 mt-0.5">🇧🇷 Brasil</div>
         </div>
         <div className="bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-xl p-3 text-center">
-          <div className="text-lg font-bold">{REGIONAL_STATS.EU}</div>
+          <div className="text-lg font-bold">
+            {euCount.toLocaleString("pt-PT")}
+          </div>
           <div className="text-xs text-blue-200 mt-0.5">🇪🇺 Europa</div>
         </div>
       </div>
+      <p className="text-xs text-center text-gray-400 mt-1">
+        ⚖️ Fonte: AbuseIPDB · OTX AlienVault · Comunidade ICP — GDPR compliant
+      </p>
 
       {/* City counter */}
       {selectedCity && cityCount !== null && (
@@ -1963,7 +1972,13 @@ export function FraudHeatmap() {
               className="font-bold text-sm"
               style={{ color: periodFilter === p ? "#fff" : PERIOD_COLOR[p] }}
             >
-              {PERIOD_COUNTS[p]}
+              {p === "24h"
+                ? count24h.toLocaleString("pt-PT")
+                : p === "7d"
+                  ? count7d.toLocaleString("pt-PT")
+                  : p === "30d"
+                    ? count30d.toLocaleString("pt-PT")
+                    : countHistorical.toLocaleString("pt-PT")}
             </div>
             <div className="text-[10px] mt-0.5 opacity-80">
               {p === "24h"

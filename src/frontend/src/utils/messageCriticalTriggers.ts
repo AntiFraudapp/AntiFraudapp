@@ -1,0 +1,215 @@
+// Dedicated constant list containing all user-provided critical trigger words and phrases
+// for message text analysis, supporting case-insensitive and accent-insensitive matching
+// via normalization utilities.
+//
+// UPDATED: Removed "Amigo", "Friend", "Dinheiro", "Money" from critical triggers
+// These words are now in medium-risk category with appropriate low weights
+
+export const MESSAGE_CRITICAL_TRIGGERS = [
+  // === EXISTING TRIGGERS (PRESERVED) ===
+  // Financial and money-related (Portuguese and English) - REMOVED: dinheiro, money
+  "investimento",
+  "investment",
+  "grátis",
+  "free",
+  "gratuito",
+  "criptomoedas",
+  "cryptocurrency",
+  "crypto",
+  "dados bancários",
+  "bank details",
+  "banking information",
+  "cartão de crédito",
+  "credit card",
+  "transferência",
+  "transfer",
+  "pagamento",
+  "payment",
+
+  // Family impersonation (Portuguese and English)
+  "Olá pai",
+  "Olá mãe",
+  "Hello dad",
+  "Hello mom",
+  "Hi dad",
+  "Hi mom",
+  "troquei de número",
+  "changed my number",
+  "novo número",
+  "new number",
+  "perdi o telemóvel",
+  "lost my phone",
+
+  // Urgency and pressure (Portuguese and English)
+  "Urgente",
+  "Urgent",
+  "Último aviso",
+  "Last warning",
+  "Final notice",
+  "Atividade suspeita",
+  "Suspicious activity",
+  "imediatamente",
+  "immediately",
+  "agora",
+  "now",
+  "já",
+  "right now",
+
+  // Authority impersonation (Portuguese and English)
+  "Banco de Portugal",
+  "Segurança Social",
+  "Social Security",
+  "Finanças",
+  "Tax authority",
+  "Polícia",
+  "Police",
+  "Tribunal",
+  "Court",
+  "Ministério",
+  "Ministry",
+  "Governo",
+  "Government",
+
+  // Account security threats (Portuguese and English)
+  "Conta bloqueada",
+  "Account blocked",
+  "Conta suspensa",
+  "Account suspended",
+  "Verificação obrigatória",
+  "Mandatory verification",
+  "Confirme seus dados",
+  "Confirm your details",
+  "Atualize sua senha",
+  "Update your password",
+
+  // Prize and lottery scams (Portuguese and English)
+  "Ganhou um prêmio",
+  "You won a prize",
+  "Loteria",
+  "Lottery",
+  "Sorteio",
+  "Raffle",
+  "Prêmio",
+  "Prize",
+
+  // Crypto-specific threats (Portuguese and English)
+  "Chave privada",
+  "Private key",
+  "Seed phrase",
+  "Frase de recuperação",
+  "Recovery phrase",
+  "Carteira digital",
+  "Digital wallet",
+
+  // === NEW EXPANSION: Money/Transfers (CRITICAL ONLY) ===
+  "transferir urgente",
+  "envie dinheiro",
+  "manda dinheiro",
+  "PIX urgente",
+  "MBWay urgente",
+  "Western Union",
+  "Wise transfer",
+  "Revolut urgente",
+  "cartão oferta urgente",
+  "gift card urgente",
+  "taxa urgente",
+  "comissão urgente",
+  "depósito urgente",
+  "banco bloqueado",
+  "conta suspensa urgente",
+  "confirmação bancária urgente",
+  "seed phrase urgente",
+  "chave privada urgente",
+
+  // === NEW EXPANSION: Urgency/Emotional Pressure ===
+  "muito urgente",
+  "não contes a ninguém",
+  "é segredo",
+  "confidencial urgente",
+  "não digas a ninguém",
+  "preciso já",
+  "estou desesperado",
+  "estou em perigo",
+  "socorro urgente",
+  "emergência grave",
+  "problema grave urgente",
+  "última oportunidade",
+  "último aviso urgente",
+
+  // === NEW EXPANSION: False Gains/Investment ===
+  "ganhou prémio",
+  "herança urgente",
+  "loteria ganhou",
+  "investimento garantido",
+  "lucro garantido",
+  "oportunidade única urgente",
+  "dobrar dinheiro",
+  "trading automático",
+  "robot investidor",
+  "mineração urgente",
+  "staking urgente",
+  "ICO urgente",
+  "airdrops urgente",
+  "bónus urgente",
+  "rendimento passivo garantido",
+  "garantia 100%",
+
+  // === NEW EXPANSION: Security/Social Engineering ===
+  "código urgente",
+  "verificação urgente",
+  "OTP urgente",
+  "SMS código",
+  "confirma urgente",
+  "valida urgente",
+  "atualiza dados urgente",
+  "redefinir senha urgente",
+  "password urgente",
+  "login urgente",
+  "autenticação urgente",
+  "suporte técnico urgente",
+  "equipa de segurança",
+  "identidade comprometida",
+
+  // === NEW EXPANSION: Family Fraud ===
+  "olá pai urgente",
+  "olá mãe urgente",
+  "sou eu urgente",
+  "troquei de número urgente",
+  "é o meu novo número",
+  "envia dinheiro para este número",
+  "preciso que transfiras",
+  "não consigo ligar urgente",
+  "bateria fraca urgente",
+  "acidente urgente",
+  "hospital urgente",
+  "problema legal urgente",
+
+  // === NEW EXPANSION: Romance Scam ===
+  "amor urgente",
+  "querido urgente",
+  "militar em missão",
+  "plataforma petrolífera",
+  "engenheiro no estrangeiro",
+  "viúvo urgente",
+  "quero visitar-te urgente",
+  "envia ajuda financeira",
+
+  // === NEW EXPANSION: Packages/Customs ===
+  "encomenda retida urgente",
+  "taxa alfandegária urgente",
+  "libertar pacote urgente",
+  "entrega falhada urgente",
+
+  // === NEW EXPANSION: False Authority ===
+  "tribunal urgente",
+  "polícia urgente",
+  "autoridade fiscal",
+  "finanças urgente",
+  "impostos atrasados",
+  "mandado urgente",
+  "processo judicial",
+  "penhora urgente",
+];
+
+// CRITICAL_TRIGGER_WORDS is deprecated - use MESSAGE_CRITICAL_TRIGGERS
+export const CRITICAL_TRIGGER_WORDS = MESSAGE_CRITICAL_TRIGGERS;

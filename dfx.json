@@ -1,0 +1,48 @@
+{
+  "canisters": {
+    "frontend": {
+      "type": "assets",
+      "source": ["src/frontend/dist"],
+      "candid": "src/frontend/src/declarations/frontend.did",
+      "specified_id": "v63rh-lqaaa-aaaaa-qewvq-cai"
+    },
+    "backend": {
+      "type": "motoko",
+      "main": "src/backend/main.mo",
+      "specified_id": "c6sjf-tqaaa-aaaap-qsiea-cai"
+    },
+    "denuncias": {
+      "type": "motoko",
+      "main": "src/backend/denuncias.mo",
+      "specified_id": "7w5qg-6aaaa-aaaab-ael4a-cai"
+    },
+    "location": {
+      "type": "motoko",
+      "main": "src/backend/location.mo",
+      "specified_id": "sodv3-uiaaa-aaaak-qxubq-cai"
+    },
+    "contacts": {
+      "type": "motoko",
+      "main": "src/backend/main.mo",
+      "specified_id": "ezroe-caaaa-aaaac-bcdeq-cai"
+    },
+    "public_data": {
+      "type": "motoko",
+      "main": "src/backend/main.mo",
+      "specified_id": "e2m3q-yqaaa-aaaas-qekva-cai"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "networks": {
+    "ic": {
+      "providers": ["https://ic0.app"],
+      "type": "persistent"
+    }
+  },
+  "version": 1
+}

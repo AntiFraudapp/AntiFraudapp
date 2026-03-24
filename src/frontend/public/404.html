@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntiFraud / By HCoragem</title>
+  <script>
+    // SPA fallback redirect for known routes
+    (function() {
+      const knownRoutes = [
+        '/',
+        '/mission',
+        '/institucional',
+        '/institucional/mission',
+        '/how-it-works',
+        '/terms',
+        '/privacy',
+        '/documentation',
+        '/public-services',
+        '/international-contact-search',
+        '/map',
+        '/verify-global-phone',
+        '/admin/terms'
+      ];
+      
+      const path = window.location.pathname;
+      
+      // Check if current path matches any known route (exact or prefix)
+      const isKnownRoute = knownRoutes.some(route => 
+        path === route || path.startsWith(route + '/')
+      );
+      
+      if (isKnownRoute) {
+        // Redirect to app shell with original path preserved
+        const redirect = window.location.origin + path + window.location.search + window.location.hash;
+        window.location.replace(redirect.replace('/404.html', '/'));
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 100px auto; padding: 20px; text-align: center;">
+    <h1>AntiFraud / By HCoragem</h1>
+    <p>Redirecting to app...</p>
+    <p><a href="/">Return to Home</a></p>
+  </div>
+</body>
+</html>

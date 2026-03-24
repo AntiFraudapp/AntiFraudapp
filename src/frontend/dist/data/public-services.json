@@ -1,0 +1,95 @@
+{
+  "services": [
+    {
+      "name": "Hospital de Santa Maria",
+      "contact": "+351 21 780 5000",
+      "address": "Av. Prof. Egas Moniz, 1649-035 Lisboa, Portugal",
+      "category": "hospital",
+      "distanceText": "Central Lisbon"
+    },
+    {
+      "name": "Hospital de São João",
+      "contact": "+351 22 551 2100",
+      "address": "Alameda Prof. Hernâni Monteiro, 4200-319 Porto, Portugal",
+      "category": "hospital",
+      "distanceText": "Central Porto"
+    },
+    {
+      "name": "PSP - Polícia de Segurança Pública (Lisboa)",
+      "contact": "+351 21 765 4242",
+      "address": "Rua Capelo, 13, 1200-087 Lisboa, Portugal",
+      "category": "police",
+      "distanceText": "Central Lisbon"
+    },
+    {
+      "name": "PSP - Polícia de Segurança Pública (Porto)",
+      "contact": "+351 22 209 6200",
+      "address": "Rua de Gondarém, 4300-241 Porto, Portugal",
+      "category": "police",
+      "distanceText": "Central Porto"
+    },
+    {
+      "name": "Bombeiros Voluntários de Lisboa",
+      "contact": "+351 21 342 2222",
+      "address": "Rua Viriato, 1050-233 Lisboa, Portugal",
+      "category": "fire_station",
+      "distanceText": "Central Lisbon"
+    },
+    {
+      "name": "Bombeiros Sapadores do Porto",
+      "contact": "+351 22 339 2100",
+      "address": "Rua do Heroísmo, 4300-259 Porto, Portugal",
+      "category": "fire_station",
+      "distanceText": "Central Porto"
+    },
+    {
+      "name": "Emergência Nacional (INEM)",
+      "contact": "112",
+      "address": "National Emergency Number - Portugal",
+      "category": "emergency",
+      "distanceText": "Nationwide"
+    },
+    {
+      "name": "Linha Saúde 24",
+      "contact": "808 24 24 24",
+      "address": "National Health Helpline - Portugal",
+      "category": "emergency",
+      "distanceText": "Nationwide"
+    },
+    {
+      "name": "Serviços Municipais de Lisboa",
+      "contact": "+351 21 798 8000",
+      "address": "Praça do Município, 1100-038 Lisboa, Portugal",
+      "category": "government",
+      "distanceText": "Central Lisbon"
+    },
+    {
+      "name": "Câmara Municipal do Porto",
+      "contact": "+351 22 209 7000",
+      "address": "Praça General Humberto Delgado, 4049-001 Porto, Portugal",
+      "category": "government",
+      "distanceText": "Central Porto"
+    },
+    {
+      "name": "Emergency Services (UK)",
+      "contact": "999",
+      "address": "National Emergency Number - United Kingdom",
+      "category": "emergency",
+      "distanceText": "UK Nationwide"
+    },
+    {
+      "name": "Emergency Services (USA)",
+      "contact": "911",
+      "address": "National Emergency Number - United States",
+      "category": "emergency",
+      "distanceText": "USA Nationwide"
+    },
+    {
+      "name": "Emergency Services (EU)",
+      "contact": "112",
+      "address": "European Emergency Number",
+      "category": "emergency",
+      "distanceText": "EU-wide"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  height: 100%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --background: 0.98 0 0;
+    --foreground: 0.15 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.15 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0 0;
+    --primary: 0.55 0.18 230;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.92 0.02 230;
+    --secondary-foreground: 0.15 0 0;
+    --muted: 0.94 0.01 230;
+    --muted-foreground: 0.5 0 0;
+    --accent: 0.9 0.03 230;
+    --accent-foreground: 0.15 0 0;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.88 0.01 230;
+    --input: 0.88 0.01 230;
+    --ring: 0.55 0.18 230;
+    --chart-1: 0.6 0.2 230;
+    --chart-2: 0.65 0.18 200;
+    --chart-3: 0.55 0.16 260;
+    --chart-4: 0.7 0.22 210;
+    --chart-5: 0.75 0.18 240;
+    --sidebar: 0.99 0 0;
+    --sidebar-foreground: 0.15 0 0;
+    --sidebar-primary: 0.55 0.18 230;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.92 0.02 230;
+    --sidebar-accent-foreground: 0.15 0 0;
+    --sidebar-border: 0.88 0.01 230;
+    --sidebar-ring: 0.7 0 0;
+  }
+
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.98 0 0;
+    --card: 0.18 0 0;
+    --card-foreground: 0.98 0 0;
+    --popover: 0.2 0 0;
+    --popover-foreground: 0.98 0 0;
+    --primary: 0.65 0.2 230;
+    --primary-foreground: 0.12 0 0;
+    --secondary: 0.25 0.02 230;
+    --secondary-foreground: 0.98 0 0;
+    --muted: 0.25 0.01 230;
+    --muted-foreground: 0.65 0 0;
+    --accent: 0.3 0.03 230;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.3 0.01 230;
+    --input: 0.3 0.01 230;
+    --ring: 0.65 0.2 230;
+    --chart-1: 0.55 0.22 230;
+    --chart-2: 0.65 0.18 200;
+    --chart-3: 0.7 0.2 260;
+    --chart-4: 0.6 0.24 210;
+    --chart-5: 0.68 0.2 240;
+    --sidebar: 0.18 0 0;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.55 0.22 230;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.25 0.02 230;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.3 0.01 230;
+    --sidebar-ring: 0.5 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Enhanced accessibility for elderly users */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Larger touch targets for mobile */
+  @media (max-width: 768px) {
+    button {
+      min-height: 48px;
+    }
+  }
+}
+
+/* ─── Leaflet map rendering fixes ──────────────────────────────────────────── */
+/* Ensure the Leaflet container fills its parent and tiles render correctly */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}
+
+/* Prevent Tailwind's border-border utility from breaking Leaflet tile images */
+.leaflet-tile {
+  border: none !important;
+}
+
+/* Ensure map popup z-index is above page content but below modals */
+.leaflet-popup {
+  z-index: 800;
+}
+
+#antifraud-map,
+#antifraud-map-session,
+#location-map-standalone {
+  height: 60vh;
+  min-height: 300px;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}

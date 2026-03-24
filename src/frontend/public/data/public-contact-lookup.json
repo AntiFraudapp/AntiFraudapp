@@ -1,0 +1,16 @@
+{
+  "phone:+351912000000": {
+    "displayName": "Example Public Service",
+    "summary": "Public service contact number registered in official directory.",
+    "source": "Public Telecommunications Registry",
+    "sourceUrl": "https://example.com/registry",
+    "asOfDate": "2026-02-01"
+  },
+  "email:example@public-domain.com": {
+    "displayName": "Public Organization",
+    "summary": "Email address listed in public organization directory.",
+    "source": "Public Organization Directory",
+    "sourceUrl": "https://example.com/directory",
+    "asOfDate": "2026-02-01"
+  }
+}

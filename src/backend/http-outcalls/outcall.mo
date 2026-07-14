@@ -30,7 +30,7 @@ module {
   public func httpGetRequest(url : Text, extraHeaders : [Header], transform : Transform) : async Text {
     let headers = extraHeaders.concat([{
       name = "User-Agent";
-      value = "caffeine.ai";
+      value = "antifraudapp.com";
     }]);
     let http_request : IC.http_request_args = {
       url;
@@ -53,7 +53,7 @@ module {
 
   public func httpPostRequest(url : Text, extraHeaders : [Header], body : Text, transform : Transform) : async Text {
     let headers = extraHeaders.concat([
-      { name = "User-Agent"; value = "caffeine.ai" },
+      { name = "User-Agent"; value = "antifraudapp.com" },
       { name = "Idempotency-Key"; value = "Time-" # Time.now().toText() },
     ]);
     let requestBody = body.encodeUtf8();
@@ -69,7 +69,7 @@ module {
       };
       is_replicated = ?false;
     };
-    let httpResponse = await (with cycles = httpRequestCycles) IC.http_request(httpRequest);
+    let httpResponse = await (with cycles = httpRequestCycles) IC.http_request(http_request);
     switch (httpResponse.body.decodeUtf8()) {
       case (null) { Runtime.trap("empty HTTP response") };
       case (?decodedResponse) { decodedResponse };

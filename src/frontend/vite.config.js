@@ -9,8 +9,9 @@ const ii_url =
     : `https://identity.internetcomputer.org/`;
 
 process.env.II_URL = process.env.II_URL || ii_url;
+// Storage Gateway URL now uses environment variable (will default to ICP canister storage)
 process.env.STORAGE_GATEWAY_URL =
-  process.env.STORAGE_GATEWAY_URL || "https://blob.caffeine.ai";
+  process.env.STORAGE_GATEWAY_URL || "https://storage.antifraudapp.icp";
 
 export default defineConfig({
   logLevel: "error",

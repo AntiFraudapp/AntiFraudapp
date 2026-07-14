@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-CALM_MOC_PATH="/home/ubuntu/.motoko/moc/1.2.0/bin/moc"
-CALM_MOTOKO_CORE="/home/ubuntu/.motoko/core/moc-1.2.0"
+MOC_PATH="/home/ubuntu/.motoko/moc/1.2.0/bin/moc"
+MOTOKO_CORE="/home/ubuntu/.motoko/core/moc-1.2.0"
 
 # Remove any prior src to avoid nested src/src
 BUILD_DIR=$(mktemp -d)
@@ -11,22 +11,22 @@ cd "$BUILD_DIR"
 
 ls -la
 
-if [ ! -x "$CALM_MOC_PATH" ]; then
-    echo "Error: Motoko compiler not found at $CALM_MOC_PATH" >&2
+if [ ! -x "$MOC_PATH" ]; then
+    echo "Error: Motoko compiler not found at $MOC_PATH" >&2
     exit 1
 fi
 
-if [ ! -d "$CALM_MOTOKO_CORE" ]; then
-    echo "Error: Motoko core library not found at $CALM_MOTOKO_CORE" >&2
+if [ ! -d "$MOTOKO_CORE" ]; then
+    echo "Error: Motoko core library not found at $MOTOKO_CORE" >&2
     exit 1
 fi
 
 pnpm install --prefer-offline --child-concurrency 2 --network-concurrency 6
-pnpm --filter '@caffeine/template-frontend' build:skip-bindings
+pnpm --filter '@antifraudapp/frontend' build:skip-bindings
 node scripts/prune-unused-images.js
 node scripts/resize-images.js
 
-$CALM_MOC_PATH --implicit-package core --default-persistent-actors -no-check-ir -E M0236 -E M0235 -E M0223 -E M0237 --actor-idl src/backend/system-idl --package core "$CALM_MOTOKO_CORE" src/backend/main.mo -o src/backend/backend.wasm
+$MOC_PATH --implicit-package core --default-persistent-actors -no-check-ir -E M0236 -E M0235 -E M0223 -E M0237 --actor-idl src/backend/system-idl --package core "$MOTOKO_CORE" src/backend/main.mo -o src/backend/backend.wasm
 
 mkdir -p /workdir/src/frontend/
 mkdir -p /workdir/src/backend/
